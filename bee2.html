@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+            <style>
+            #faq {
+                max-width: 800px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            .faq-item {
+                border-bottom: 1px solid #ddd;
+                padding: 10px 0;
+            }
+
+            .faq-item h3 {
+                font-size: 18px;
+                color: #333;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .toggle-icon {
+                font-size: 20px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            .faq-item p {
+                font-size: 16px;
+                color: #555;
+                display: none;
+                margin-top: 5px;
+            }
+
+            .faq-item.active p {
+                display: block;
+            }
+
+            .faq-item.active .toggle-icon {
+                content: "-";
+            }
+            </style>
+
+</head>
+
+<body>
+    <section id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <h3>How can I order honey? <span class="toggle-icon">+</span></h3>
+            <p>You can order honey through our website or WhatsApp.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Is your honey 100% natural? <span class="toggle-icon">+</span></h3>
+            <p>Yes! Our honey is completely natural and unprocessed.</p>
+        </div>
+        <div class="faq-item">
+            <h3>Do you offer delivery services? <span class="toggle-icon">+</span></h3>
+            <p>Yes, we deliver nationwide. Delivery time depends on your location.</p>
+        </div>
+    </section>
+</body>
+
+<script>
+        document.querySelectorAll(".faq-item h3").forEach((question) => {
+           question.addEventListener("click", () => {
+            const parent = question.parentElement;
+            parent.classList.toggle("active");
+            const icon = question.querySelector(".toggle-icon");
+            icon.textContent = parent.classList.contains("active") ? "-" : "+";
+        });
+  });
+</script>
+
