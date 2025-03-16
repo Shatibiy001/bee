@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shatibiy Beekeeping Consult</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #ffcc00;
+                padding: 5px 10px;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #333;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+         .nav-links li {
+             display: inline;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: #ffcc00;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #333;
+        }
+        header {
+            background: url('b8503f4b-a290-406d-ae2a-e1c89beeea44_0_watermark.jpeg') no-repeat center center/cover;
+            height: 60vh;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: white;
+            font-size: 2.0rem;
+            font-weight: bold;
+        }
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+        }
+        .btn {
+            display: inline-block;
+            background: #ffcc00;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .modern-heading {
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 24px;
+                    color: #ffcc00;
+                    text-transform: uppercase;
+                    margin-top: 30px;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        .slider {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slides img {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+        .training-images img {
+                    width: 100%;
+                    max-width: 500px;
+                    margin: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+        }
+        .container {
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    border-radius: 10px;
+                    background-color: #fff;
+        }
+        #bee {
+                    position: absolute;
+                    width: 80px;
+                    z-index: 1000;
+                    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.3)); /* Soft shadow */
+                    transition: transform 1s ease-in-out;
+                    animation: beeFlight 15s infinite linear alternate;
+        }
+
+        @keyframes beeFlight {
+                    0% { transform: translate(10vw, 10vh) rotate(0deg); }
+                    20% { transform: translate(60vw, 20vh) rotate(20deg); }
+                    40% { transform: translate(80vw, 50vh) rotate(-20deg); }
+                    60% { transform: translate(40vw, 80vh) rotate(10deg); }
+                    80% { transform: translate(20vw, 60vh) rotate(-10deg); }
+                    100% { transform: translate(10vw, 10vh) rotate(0deg); }
+        }
+
+/* Hover Effect: Bee moves faster when hovered */
+        #bee:hover {
+                animation-duration: 5s;
+                filter: drop-shadow(5px 5px 15px rgba(255, 223, 0, 0.7)); /* Brighter glow */
+        }
+
+        .pure-honey {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            background: #fff5cc;
+            padding: 40px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .pure-honey:hover {
+            transform: scale(1.05);
+        }
+        .testimonial-container {
+            width: 90%;
+            background: white;
+            padding: 50px;
+            box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            text-align: center;
+            position: center;
+        }
+        .testimonial {
+            display: none;
+        }
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        .controls button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        .controls button:hover {
+            background: #0056b3;
+        }
+
+        .sule {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 10px 0;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        ul li a:hover {
+            background: #007bff;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            .sule {
+                max-width: 90%;
+                padding: 15px;
+            }
+        }
+        
+        #faq {
+                max-width: 800px;
+                margin: auto;
+                padding: 20px;
+            }
+
+            .faq-item {
+                border-bottom: 1px solid #ddd;
+                padding: 10px 0;
+            }
+
+            .faq-item h3 {
+                font-size: 18px;
+                color: #333;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .toggle-icon {
+                font-size: 20px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            .faq-item p {
+                font-size: 16px;
+                color: #555;
+                display: none;
+                margin-top: 5px;
+            }
+
+            .faq-item.active p {
+                display: block;
+            }
+
+            .faq-item.active .toggle-icon {
+                content: "-";
+            }
+        
+
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Shatibiy Beekeeping</div>
+        <ul class="nav-links">
+            <li><a href="#about">About Us</a></li>
+            <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">
+            <li><a href="#what-you-need-to-know">Info</a></li>
+            <li><a href="#ramadan-program">Ramadan Program</a></li>
+            <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">
+            <li><a href="#pure-honey">Pure Honey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+
+    <header> <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> </header>
+
+    
+    <section id="about" class="container">
+        <div>
+        <h2 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">About Us</h2>
+        <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">
+        <p>Shatibiy Bee Keeping Consult is a pioneering organization dedicated to <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> promoting sustainable beekeeping practices, providing expert consulting services, and fostering a community of bee enthusiasts.</p>
+        <p>Shatibiy Bee-keeping Consult is a company that is into the business of selling honey, bee-keeping training, honey harvesting, and selling of harvesting kits. We are dedicated to sustainable beekeeping and producing high-quality bee products.</p>
+            <h3>What we do:</h3>
+            <ul>
+                <li>Selling of Honey</li>
+                <li>Bee-keeping Training</li>
+                <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">
+                <li>Honey Harvesting</li>
+                <li>Selling of Harvesting kits</li>
+            </ul>
+            <p>Are you looking for where you can get your pure and unadulterated <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> honey that is packed with 100% nutrients? We are the perfect plug for you👌✨</p>
+            <h3 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">Why choose us?</h3>
+            <ul style="background: url('background-image.jpg') no-repeat center center/cover; padding: 20px; border-radius: 10px;"></ul>
+                <li>Unadulterated honey</li>
+                <li>100% Natural</li>
+                <li>100% hygienic</li>
+                <li>Locally sourced with no chemicals</li>
+            </ul>
+            <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">
+            <p>Search no more 👌, our honey is perfect for your tea, toast or straight from your spoon to boost your immunity 😀. This is the natural unadulterated honey you deserve 👌✨</p>
+            <p>Note: There is presently an open application <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> for those who wish to learn about Breeding Honey.</p>
+        </div>
+     </section>
+
+    
+    <section id="what-you-need-to-know" class="container">
+        <h2 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">What You Need to Know <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> </h2>
+        <div class="slider">
+            <div class="slides">
+            <img src="IMG-20250219-WA0122.jpg" alt="Beekeeping Image 1">
+            <img src="IMG-20250308-WA0014.jpg" alt="Bee-Keeping Training">
+            <img src="IMG-20250219-WA0126.jpg" alt="New Image">
+            <img src="C:/Users/Dell/Desktop/shatibiy web/IMG-20250219-WA0123.jpg" alt="Beekeeping Image 2">
+            <img src="c:\Users\Dell\Desktop\shatibiy web\IMG-20250219-WA0122.jpg" alt="Bee-Keeping Training 2">
+            <img src="c:\Users\Dell\Desktop\shatibiy web\IMG-20250219-WA0124.jpg" alt="Beekeeping Image 3">
+            </div>
+        </div>
+    </section>
+    <section id="ramadan-program" class="container">
+        <h2 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">Ramadan Program</h2>
+        <p>Join our special Ramadan program where we offer exclusive discounts on our honey products and<img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">  beekeeping training sessions. This is a great opportunity to learn more about sustainable beekeeping and enjoy the benefits of pure, natural honey during the holy month of Ramadan.</p>
+        <div class="slider">
+            <div class="slides">
+                <img src="c:\Users\Dell\Desktop\shatibiy web\IMG-20250303-WA0043.jpg" alt="Ramadan Program Image 1">
+            </div>
+        </div>
+        <ul>
+            <li>Discounted honey products</li>
+            <li>Special beekeeping training sessions</li>
+            <li>Exclusive offers for Ramadan</li>
+        </ul>
+        <p>Don't miss out on this opportunity to enhance your knowledge and enjoy the best honey products. Contact us for more details and to register for the program.</p>
+    </section>
+    <section id="pure-honey" class="container pure-honey">
+        <h2>Pure Honey <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> </h2>
+        <p>Pure honey is a nutritious food and one of our oldest medicines. Honey contains over 200 components, including natural sugars, amino acids, minerals, pre-biotics and other trace nutrients. It is a healthy and tasty replacement for processed sugars.</p>
+        <p>Honey also has proven health benefits. It can be an effective treatment for a wide range of conditions, including allergies, digestive problems, skin conditions and more.</p>
+        <p>Unfortunately, nearly all honey sold <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee">  commercially has been treated in ways which reduce or remove its health benefits. In fact, much of what is sold as ‘honey’ is little more than processed sugar syrup.</p>
+        <p>Buying directly from a beekeeper increases your chances of getting ‘proper’ honey.</p>
+    </section>
+    <section id="contact" class="container">
+        <section id="bee-keeping-training" class="container">
+            <div class="training-images"></div>
+                <img src="c:\Users\Dell\Desktop\shatibiy web\IMG-20250308-WA0014.jpg" alt="Training Image 1" style="margin: 10px;">
+            </div>
+            <h2 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">Bee-keeping Training</h2>
+            <p>Our bee-keeping training program is designed for both beginners and experienced beekeepers. We offer comprehensive training sessions that cover all aspects of bee-keeping, from setting up your first hive to advanced techniques in honey production and hive management.</p>
+            <p>Our training includes <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> hands-on experience with our expert trainers, who will guide you through the process of maintaining healthy bee colonies, harvesting honey, and ensuring the sustainability of your bee-keeping practices.</p>
+            <p>Join our training program to gain valuable knowledge and skills that will help you become a successful beekeeper. Whether you are looking to start a new hobby or expand your existing bee-keeping operation, our training program is the perfect place to start.</p>
+            <p>For more information about our bee-keeping training program, please check the images below or through our contact information.</p
+                   
+        </section>
+    <section>
+        <div class="testimonial-container">
+            <h2 class="modern-heading" style="background-color: #f0f0f0; padding: 10px; border-radius: 5px;">Testimonial</h2>
+            <div class="testimonial active"> 
+                <p>"I've tried many brands, but this honey is the purest and most delicious. You can taste the quality in every drop!."</p>
+                <h4>- makanjuola Habeebullah</h4>
+            </div>
+            <div class="testimonial">
+                <p>"This honey has completely transformed my morning tea—so rich and smooth!"</p>
+                <h4>- Jane Smith</h4>
+            </div>
+            <div class="testimonial">
+                <p>"The best honey I’ve ever tasted! It’s thick, fragrant, and packed with flavor"</p>
+                <h4>-Adebayo Idris</h4>
+            </div>
+            <div class="testimonial">
+                <p>"This honey takes my homemade granola to the next level!"</p>
+                <h4>- Eniola Habeebullah</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I replaced sugar with this honey, and I feel so much healthier"</p>
+                <h4>- Semiu Ayobo</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Knowing that this honey comes from ethical beekeeping makes me appreciate it even more."</p>
+                <h4>- Oyeleke Faizah</h4>
+            </div>
+            <div class="testimonial">
+                <p>"I switched to this honey for its health benefits, and I feel amazing!"</p>
+                <h4>- Musa Tirimisiyu</h4>
+            </div>
+            <div class="testimonial">
+                <p>"You are the best @shatibiybeeconslt  "</p>
+                <h4>- AbdulRauf Aminah</h4>
+            </div>
+            <div class="testimonial">
+                <p>"Excellent customer service and a fantastic product. Five stars!"</p>
+                <h4>- Adam Adelakun</h4>
+            </div>
+            <div class="testimonial">
+                <p>""This product has changed my life! Highly recommend to everyone."!"</p>
+                <h4>- Agboola Abdullah</h4>
+            </div>
+            <div class="controls">
+                <button onclick="prevTestimonial()">Previous</button>
+                <button onclick="nextTestimonial()">Next</button>
+           
+        </div>
+        <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>How can I order honey? <span class="toggle-icon">+</span></h3>
+                <p>You can order honey through our website or WhatsApp.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is your honey 100% natural? <span class="toggle-icon">+</span></h3>
+                <p>Yes! Our honey is completely natural and unprocessed.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Do you offer delivery services? <span class="toggle-icon">+</span></h3>
+                <p>Yes, we deliver nationwide. Delivery time depends on your location.</p>
+            </div>
+    </section>
+    
+    <h2>Contact Us</h2>
+    <p>If you have any questions or would like to learn more about our services, please feel free to contact us using the form below or through our contact information.</p>
+
+    <h3>Our Contact Information <img id="bee" src="c:\Users\Dell\Desktop\shatibiy web\download__2_-removebg-preview.png" alt="Flying Bee"> </h3>
+    <section id="links" class="container" style="background-color: #f0f0f0; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2>Direct Links To shatibiy BeeKeeping</h2>
+        <ul>
+            <li><a href="tel:09131449706">📞 Call Us: 09131449706</a></li>
+            <li><a href="https://wa.me/2349131449706" target="_blank">💬 WhatsApp Contact</a></li>
+            <li><a href="https://www.facebook.com/yourpage" target="_blank">🌍 Facebook</a></li>
+            <li><a href="https://www.instagram.com/shatibiy001/?igsh=cGljanE1bGEyc21l#" target="_blank">📸 Instagram</a></li>
+            <li><a href="https://twitter.com/yourpage" target="_blank">🐦 Twitter</a></li>
+            <li><a href="https://www.tiktok.com/@shatibiy01" target="_blank">🎵 TikTok</a></li>
+            <li><a href="mailto:adelekeuthman83@gmail.com">📧 Email Us</a></li>
+            <li><a href="https://www.google.com/maps/search/?api=1&query=No+42+Mallam+Tope+Osogbo+Osun+State" target="_blank">📍 Visit Us: No 42 Mallam Tope, Osogbo, Osun State</a></li>
+        </ul>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Shatibiy Beekeeping Consult | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let index = 0;
+        function slideImages() {
+            const slides = document.querySelector('.slides');
+            const totalImages = document.querySelectorAll('.slides img').length;
+            index++;
+            if (index >= totalImages) {
+                index = 0;
+            }
+            slides.style.transform = `translateX(${-index * 100}%)`;
+        }
+        setInterval(slideImages, 3000);
+
+        const bee = document.getElementById('bee');
+
+            function moveBee() {
+                const x = Math.random() * window.innerWidth * 0.8; // Avoids edge clipping
+                const y = Math.random() * window.innerHeight * 0.8;
+                const rotation = Math.random() * 360; // Random rotation to simulate movement
+
+            bee.style.transform = `translate(${x}px, ${y}px) rotate(${rotation}deg)`;
+        }
+
+            setInterval(moveBee, 3000); // Moves every 3 seconds
+
+
+            let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                testimonial.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextTestimonial() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+        function prevTestimonial() {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }
+
+
+            document.querySelectorAll("ul li a").forEach(link => {
+            link.addEventListener("mouseover", () => {
+                link.style.transition = "transform 0.3s ease-in-out";
+                link.style.transform = "scale(1.1)";
+            });
+
+            link.addEventListener("mouseout", () => {
+                link.style.transform = "scale(1)";
+            });
+        });
+        function toggleMenu() {
+        document.querySelector(".nav-links").classList.toggle("active");
+    }
+
+        document.querySelectorAll(".faq-item h3").forEach((question) => {
+           question.addEventListener("click", () => {
+            const parent = question.parentElement;
+            parent.classList.toggle("active");
+            const icon = question.querySelector(".toggle-icon");
+            icon.textContent = parent.classList.contains("active") ? "-" : "+";
+        });
+  });
+    </script>
+</body>
+</html>
